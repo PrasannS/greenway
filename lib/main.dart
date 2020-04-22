@@ -7,7 +7,7 @@ import 'package:greenway/api_client/api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'package:greenway/result_page.dart';
+import 'package:greenway/views/result_page.dart';
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`

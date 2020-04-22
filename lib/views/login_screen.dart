@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greenway/HomePage.dart';
-
-import 'package:greenway/views/signup_screen.dart';
+import 'package:greenway/views/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -106,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             (value) {
                                           Navigator.push(
                                             context,
-                                            MaterialPageRoute(builder: (context) => HomePage()),
+                                            MaterialPageRoute(builder: (context) => (MainPage())),
                                           );
                                         });
                                   }
