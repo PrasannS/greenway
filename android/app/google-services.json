@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1023483798424",
+    "firebase_url": "https://skillquest-140a3.firebaseio.com",
+    "project_id": "skillquest-140a3",
+    "storage_bucket": "skillquest-140a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023483798424:android:56e20e56c0dcaa72b701ed",
+        "android_client_info": {
+          "package_name": "idea.skill_quest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023483798424-l726l37tkvfqkc68n80t6a2091qu47ga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ZHDmBGx6fKTidawJqzi0LtehMvkTTqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023483798424-l726l37tkvfqkc68n80t6a2091qu47ga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
