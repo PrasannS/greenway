@@ -8,13 +8,13 @@ import 'package:greenway/api_client/footprint_result.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'package:greenway/views/result_page.dart';
+import 'package:greenway/result_page.dart';
 
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../detector_painters.dart';
+import 'detector_painters.dart';
 
 
 class ResultPage extends StatefulWidget {

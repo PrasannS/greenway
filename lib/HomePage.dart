@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greenway/views/result_page.dart';
+import 'package:greenway/result_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
