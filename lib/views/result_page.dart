@@ -237,9 +237,7 @@ class _ResultPageState extends State<ResultPage> {
                   height: 80,
                   width: 150,
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.purple,  Colors.white,Colors.white,Colors.purple,],
-                      ),borderRadius: BorderRadius.circular(66)
+                      borderRadius: BorderRadius.circular(66)
                   ),
                   child: Text(name,
                     style: TextStyle(
@@ -286,67 +284,6 @@ class _ResultPageState extends State<ResultPage> {
                 ),
                 Text(description,
                   style: TextStyle(fontWeight: FontWeight.bold,height: 3, fontSize: 20),),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 20.0),
-                  height: 200.0,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Container(
-                        width: 200.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: ExactAssetImage('assets/carbon1.jpg'),
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 20,
-                        width: 20,),
-                      Container(
-                        width: 200.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: ExactAssetImage('assets/carbon2.jpg'),
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 20,
-                        width: 20,),
-                      Container(
-                        width: 200.0,
-                        decoration: BoxDecoration(
-                          image:  DecorationImage(
-                            image: ExactAssetImage('assets/carbon3.jpg'),
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 20,
-                        width: 20,),
-                      Container(
-                        width: 200.0,
-                        decoration:  BoxDecoration(
-                          image:  DecorationImage(
-                            image: ExactAssetImage('assets/carbon4.jpg'),
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-
-                      ),
-                      SizedBox(
-                        height: 20,
-                        width: 20,),
-                    ],
-                  ),
-                )
 
               ]
           )
