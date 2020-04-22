@@ -14,7 +14,7 @@ import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../detector_painters.dart';
+import '../vision_utils/detector_painters.dart';
 
 
 class ResultPage extends StatefulWidget {
