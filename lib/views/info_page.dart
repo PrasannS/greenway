@@ -12,7 +12,7 @@ class InfoPage extends StatefulWidget {
 
 class _InfoPageState extends State<InfoPage>{
   PageController _pageController;
-  double _progress;
+  double _progress = 0;
   double _multiple;
   double _opacity;
   double _opacityTitleAppBar;
@@ -34,7 +34,6 @@ class _InfoPageState extends State<InfoPage>{
     int carbonnum = 90;
     int itemnum = 01;
     String category = "Leather"; //may not need this
-    //_progress = 0;
 
     return Scaffold(
       body: Container(
