@@ -97,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 40.0),
                         GestureDetector(
                           onTap: () {
+                            print("LOGIN ATTEMPTED");
                             if (_loginFormKey.currentState.validate()) {
                               FirebaseAuth.instance.signInWithEmailAndPassword(email: emailInputController.text, password: passwordInputController.text).then(
                                       (currentUser) {
