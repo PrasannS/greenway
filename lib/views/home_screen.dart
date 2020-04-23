@@ -1,3 +1,6 @@
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:greenway/api_client/api_client.dart';
 import 'package:greenway/main.dart';
@@ -12,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue[50],
       body:ListView(
         children: [
           Row(
@@ -60,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 2
                             )
                         ),
-                        color: Colors.grey[100]
+                        color: Colors.green[200]
                     ),
                     child: Column(
                       children: [
@@ -69,6 +72,7 @@ class _HomePageState extends State<HomePage> {
                           'Total CO2 emitted',
                           style: TextStyle(
                               color: Colors.black,
+                              fontStyle: FontStyle.italic,
                               fontSize: 20
                           ),
                         ),
@@ -85,7 +89,8 @@ class _HomePageState extends State<HomePage> {
                           'Total entries',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 20
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(height: 10,),
