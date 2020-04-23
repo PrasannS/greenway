@@ -1,4 +1,3 @@
-import 'dart:math';
 
 class WebResult {
   final String name;
