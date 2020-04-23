@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1023483798424",
-    "firebase_url": "https://skillquest-140a3.firebaseio.com",
-    "project_id": "skillquest-140a3",
-    "storage_bucket": "skillquest-140a3.appspot.com"
+    "project_number": "84704459214",
+    "firebase_url": "https://greenway-6cb1f.firebaseio.com",
+    "project_id": "greenway-6cb1f",
+    "storage_bucket": "greenway-6cb1f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1023483798424:android:56e20e56c0dcaa72b701ed",
+        "mobilesdk_app_id": "1:84704459214:android:33b0c02338d9f3b4aa939f",
         "android_client_info": {
-          "package_name": "idea.skill_quest"
+          "package_name": "org.crhsidea.greenway"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1023483798424-l726l37tkvfqkc68n80t6a2091qu47ga.apps.googleusercontent.com",
+          "client_id": "84704459214-kqgovfeflurv1l9n21g2p1ttsa5thj0g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC4ZHDmBGx6fKTidawJqzi0LtehMvkTTqg"
+          "current_key": "AIzaSyAyh32xubfXnaSCqWW_QcDVhyJgi33AQeE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1023483798424-l726l37tkvfqkc68n80t6a2091qu47ga.apps.googleusercontent.com",
+              "client_id": "84704459214-kqgovfeflurv1l9n21g2p1ttsa5thj0g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

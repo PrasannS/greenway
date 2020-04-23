@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class PostPage extends StatefulWidget {
+class EntriesPage extends StatefulWidget {
   @override
-  _PostPageState createState() => _PostPageState();
+  _EntriesPageState createState() => _EntriesPageState();
 }
 
-class _PostPageState extends State<PostPage> {
-  get posts => null;
-
-  get darkPrimaryColor => null;
-
-
-  get primaryColor => null;
+class _EntriesPageState extends State<EntriesPage> {
 
 
   @override
   Widget build(BuildContext context) {
     var posts;
     return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.01),
+      backgroundColor: Colors.white,
       body: ListView(
         physics: AlwaysScrollableScrollPhysics(),
         children: <Widget>[
@@ -29,9 +23,9 @@ class _PostPageState extends State<PostPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Your Feed',
+                  'Your Entries',
                   style: TextStyle(
-                    color: Colors.purpleAccent,
+                    color: Colors.black,
                     fontSize: 40,
                     fontWeight: FontWeight.w500,
                   ),
@@ -41,7 +35,7 @@ class _PostPageState extends State<PostPage> {
                     IconButton(
                       icon: Icon(Icons.shuffle),
                       iconSize: 25,
-                      color: Colors.purpleAccent,
+                      color: Colors.black54,
                       onPressed: () => print('Shuffle Feed'),
                     ),
                     SizedBox(
@@ -52,7 +46,7 @@ class _PostPageState extends State<PostPage> {
                       child: IconButton(
                         icon: Icon(Icons.add_box),
                         iconSize: 25,
-                        color: Colors.purpleAccent,
+                        color: Colors.black54,
                         onPressed: () => print('Add Update'),
                       ),
                     )
@@ -65,10 +59,9 @@ class _PostPageState extends State<PostPage> {
             height: 30,
           ),
           Container(
-            height: posts.length * 510.0,
+            height: 2000.0,
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: posts.length,
               itemBuilder: (BuildContext context, int index) {
                 return getFeedTile(index);
               },
@@ -81,18 +74,24 @@ class _PostPageState extends State<PostPage> {
   }
   
 
-  List<String>predefUsers = ['Prasann', 'Prasann','Vincent Do', 'Lucas Cai', 'Prasann','Lucas', 'Lucas','Vincent Do', 'Lucas Cai', 'Prasann'];
+  List<String>predefUsers = ['Prasann','Aditya', 'Dylan', 'Michael',];
 
   Widget getFeedTile (int index){
 
-    print(posts[0].image);
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Container(
           width: double.infinity,
-          height: 500,
+          height: 450,
           decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue,
+                  offset: Offset(0, 0.1),
+                  blurRadius: 3.0,
+                ),
+              ],
               color: Colors.white,
               borderRadius: BorderRadius.circular(25.0)),
           child: Column(
@@ -104,37 +103,18 @@ class _PostPageState extends State<PostPage> {
                 child: Column(
                   children: <Widget>[
                     ListTile(
-                      leading: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black45,
-                              offset: Offset(0, 2),
-                              blurRadius: 6,
-                            )
-                          ],
-                        ),
-                        child: CircleAvatar(
-                          backgroundImage: Image.network(posts[index].image).image,
-                        ),
-                      ),
                       title: Text(predefUsers[index]
                         ,
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.purpleAccent,),
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),
                       ),
-                      subtitle: Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(posts[index].datetime)), style: TextStyle(color: darkPrimaryColor,),),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        color: Colors.black45,
+                        color: Colors.grey,
                         onPressed: () => print('More'),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(posts[index].description),
                     ),
                     Container(
                       margin: EdgeInsets.all(10),
@@ -142,19 +122,22 @@ class _PostPageState extends State<PostPage> {
                       height: 300,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
-                        child: Image(image: Image.network(posts[index].image).image,
-                          fit: BoxFit.cover,),),
+                        child: Image.network(
+                          'https://picsum.photos/250?image=9',
+                          fit: BoxFit.cover,
+                        ),),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black45,
+                            color: Colors.grey,
                             offset: Offset(0, 5),
                             blurRadius: 8.0,
                           ),
                         ],
                         // IMAGE GOES HERE
                       ),
+
                     ),
                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal: 15.0),
@@ -166,41 +149,23 @@ class _PostPageState extends State<PostPage> {
                               Row(
                                 children: <Widget>[
                                   IconButton(
-                                      icon: Icon(Icons.favorite_border), color: Colors.purpleAccent,
+                                      icon: Icon(Icons.smoking_rooms), color: Colors.black,
                                       iconSize: 30,
                                       onPressed: () {
                                         print("LIKED!");
-                                        likePost(posts[index].datetime);
                                       }
                                   ),
                                   Text(
-                                    posts[index].total.toString(),
+                                    '120KG CO2',
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w600,
-                                      color: darkPrimaryColor,
+                                      color: Colors.black,
                                     ),
                                   )
                                 ],
                               ),
                               SizedBox(width: 10,),
-                              Row(
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.chat), color: darkPrimaryColor,
-                                    iconSize: 30,
-                                    onPressed: () => print('Comment'),
-                                  ),
-                                  Text(
-                                    '62',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      color: darkPrimaryColor,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  )
-                                ],
-                              ),
                             ],
                           ),
                           GestureDetector(
@@ -209,12 +174,12 @@ class _PostPageState extends State<PostPage> {
                             },
                             child: Container(
                               child: FlatButton.icon(
-                                color: primaryColor,
-                                icon: Icon(Icons.add_circle, color: darkPrimaryColor,),
-                                label: Text('Learn this!', style: TextStyle(
-                                  color: darkPrimaryColor,
+                                color: Colors.black26,
+                                icon: Icon(Icons.add_circle, color: Colors.black,),
+                                label: Text('More info!', style: TextStyle(
+                                  color: Colors.black,
                                 ),),
-                                splashColor: darkPrimaryColor,
+                                splashColor: Colors.black,
                                 onPressed: () {
 
                                 },
@@ -235,7 +200,5 @@ class _PostPageState extends State<PostPage> {
 
 
   }
-
-  void likePost(datetime) {}
 
 }
