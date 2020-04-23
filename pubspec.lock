@@ -235,6 +235,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_mobx:
+    dependency: "direct main"
+    description:
+      name: flutter_mobx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -341,6 +348,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.6"
+  md2_tab_indicator:
+    dependency: "direct main"
+    description:
+      name: md2_tab_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   meta:
     dependency: transitive
     description:
@@ -355,6 +369,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
+  mobx:
+    dependency: "direct main"
+    description:
+      name: mobx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   multi_server_socket:
     dependency: transitive
     description:
@@ -500,6 +521,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliding_sheet:
+    dependency: "direct main"
+    description:
+      name: sliding_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.4"
   source_map_stack_trace:
     dependency: transitive
     description:
