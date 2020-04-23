@@ -28,13 +28,15 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                     child: skipButton(context),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                      image: AssetImage(''),
+                    padding: const EdgeInsets.all(60.0),
+                    child: Container(
+                      height: 340,
+                      width: 10,
+                      child: Image(
+                        image: AssetImage('assets/images/PleaseWork.png'),
+                          fit: BoxFit.fill
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 50,
                   ),
                   Center(
                     child: Padding(
@@ -68,7 +70,7 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image(
-                      image: AssetImage('assets/onboarding/points.png'),
+                      image: AssetImage('assets/images/Improvement.png'),
                     ),
                   ),
                   SizedBox(
@@ -98,11 +100,13 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                     alignment: Alignment.centerRight,
                     child: skipButton(context),
                   ),
+                  SizedBox(height: 100,),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                      image: AssetImage('assets/onboarding/compete.png'),
-                    ),
+                    child: Image.asset('assets/images/EcoWorld.png',
+                      height: 300,
+                      width: 200,
+                    )
                   ),
                   SizedBox(
                     height: 50,
