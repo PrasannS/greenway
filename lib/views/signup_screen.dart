@@ -73,6 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           child: Column(
@@ -85,7 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: Text(
                       'Signup',
                       style: TextStyle(
-                          fontSize: 80.0, fontWeight: FontWeight.bold),
+                          fontSize: 80.0, fontWeight: FontWeight.bold,color: Colors.black),
                     ),
                   ),
                 ),
@@ -114,6 +115,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       child: Column(
                         children: <Widget>[
                           TextFormField(
+                            style: TextStyle(
+                                color: Colors.black
+                            ),
                             controller: nameInputController,
                             decoration: InputDecoration(
                                 labelText: 'NAME',
@@ -134,6 +138,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           SizedBox(height: 10.0),
                           TextFormField(
+                            style: TextStyle(
+                                color: Colors.black
+                            ),
                             controller: emailInputController,
                             decoration: InputDecoration(
                                 labelText: 'EMAIL',
@@ -149,6 +156,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           SizedBox(height: 10.0),
                           TextFormField(
+                            style: TextStyle(
+                                color: Colors.black
+                            ),
                             controller: passwordInputController,
                             decoration: InputDecoration(
                                 labelText: 'PASSWORD ',
