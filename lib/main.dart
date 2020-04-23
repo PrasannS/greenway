@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:greenway/views/result_page.dart';
+import 'on_board.dart';
+import 'home_Page.dart';
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
@@ -26,9 +28,9 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: TakePictureScreen(
+      home: HomePage(
         // Pass the appropriate camera to the TakePictureScreen widget.
-        camera: firstCamera,
+
       ),
     ),
   );
