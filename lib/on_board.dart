@@ -28,7 +28,7 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image(
-                      image: AssetImage('assets/images/simple.jpg'),
+                      image: AssetImage('assets/images/house.png'),
                     ),
                   ),
                   SizedBox(
