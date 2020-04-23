@@ -127,7 +127,7 @@ class _ResultPageState extends State<ResultPage> {
     ImageLabel label = _scanResults[0];
 
     name = label.text;
-    fetchAPIResult(name).then((value){
+    fetchFootprintResult(name).then((value){
       setState(() {
         description = value.description;
         footprint = value.value.toString();

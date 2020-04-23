@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greenway/api_client/api_client.dart';
 import 'package:greenway/main.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,6 +39,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(height: 25,),
                   IconButton(
+                    onPressed: (){
+                      print("PROCESS STARTED");
+                      fetchWebResult("shoe");
+                    },
                     icon: Icon(
                       Icons.camera,
                       size: 56,
