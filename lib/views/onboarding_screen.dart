@@ -30,7 +30,7 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image(
-                      image: AssetImage('assets/images/house.png'),
+                      image: AssetImage(''),
                     ),
                   ),
                   SizedBox(
@@ -188,7 +188,7 @@ class FinalScreen extends StatelessWidget {
                   //SizedBox(height: 100,),
                   Center(
                     child: Text(
-                      'Start your skill quest today',
+                      'Start your greenway today',
                     ),
                   ),
                   SizedBox(

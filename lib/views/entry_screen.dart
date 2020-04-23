@@ -15,6 +15,7 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurpleAccent,
       body: Column(
         children: <Widget>[
           SizedBox(height: 40.0,),
@@ -39,7 +40,7 @@ class _EntryScreenState extends State<EntryScreen> {
                   ),
                 ),
               ),
-              SizedBox(width: 40.0,),
+              SizedBox(width: 250.0,),
               GestureDetector(
                 onTap: (){
                   setState(() {
@@ -62,6 +63,7 @@ class _EntryScreenState extends State<EntryScreen> {
               SizedBox(width: 20.0,),
             ],
           ),
+          SizedBox(height: 15,),
           Expanded(
             child: PageView(
               children: pages,
@@ -69,7 +71,8 @@ class _EntryScreenState extends State<EntryScreen> {
               physics: NeverScrollableScrollPhysics(),
 
             ),
-          )
+          ),
+          SizedBox(height: 20,)
         ],
       ),
     );

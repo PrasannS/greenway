@@ -37,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Container(
+        color: Colors.white,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Column(
@@ -47,18 +48,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.fromLTRB(15.0, 100.0, 0.0, 0.0),
-                      child: Text('Skill',
+                      child: Text('Greenway',
                           style: TextStyle(
-                              fontSize: 80.0, fontWeight: FontWeight.w300)),
+                              fontSize: 70.0, fontWeight: FontWeight.w300, color: Colors.black)),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(16.0, 175.0, 0.0, 0.0),
-                      child: Text('Quest',
+                      child: Text('Login',
                           style: TextStyle(
-                              fontSize: 80.0, fontWeight: FontWeight.bold)),
+                              fontSize: 60.0, fontWeight: FontWeight.bold, color: Colors.black)),
+
                     ),
                   ],
                 ),
@@ -70,6 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: <Widget>[
                         TextFormField(
+                          style: TextStyle(
+                              color: Colors.black
+                          ),
                           controller: emailInputController,
                           decoration: InputDecoration(
                               labelText: 'EMAIL',
@@ -83,6 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 20.0),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.black
+                          ),
                           controller: passwordInputController,
                           decoration: InputDecoration(
                               labelText: 'PASSWORD',
