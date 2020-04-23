@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:greenway/models/entry.dart';
+import 'package:greenway/views/entry_screen.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 
@@ -137,6 +139,12 @@ class _OnboardingScreen extends State<OnboardingScreen> {
 
   Widget skipButton(BuildContext context) {
     return FlatButton(
+      onPressed: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EntryScreen()),
+        );
+      },
       child: Text(
         'Skip',
         style: TextStyle(
@@ -190,6 +198,12 @@ class FinalScreen extends StatelessWidget {
                     color: Colors.white,
                     icon: Icon(Icons.arrow_forward_ios),
                     iconSize: 40,
+                    onPressed:(){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EntryScreen()),
+                      );
+                    },
                   )
                 ])));
   }
