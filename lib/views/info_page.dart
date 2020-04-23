@@ -34,7 +34,7 @@ class _InfoPageState extends State<InfoPage>{
     int carbonnum = 90;
     int itemnum = 01;
     String category = "Leather"; //may not need this
-    _progress= 0;
+    //_progress = 0;
 
     return Scaffold(
       body: Container(
@@ -152,16 +152,16 @@ class _InfoPageState extends State<InfoPage>{
                 });
               },
               elevation: 0,
-              cornerRadius: 30,
+              cornerRadius: 40,
               snapSpec: const SnapSpec(
                 snap: true,
-                snappings: [0.1, 1.00],
+                snappings: [0.1, .87, 1.00],
                 positioning: SnapPositioning.relativeToAvailableSpace,
               ),
               builder: (context, state) {
                 return Container(
                   height: MediaQuery.of(context).size.height -
-                      MediaQuery.of(context).size.height * .54,
+                      MediaQuery.of(context).size.height * .12,
                   child: Details(),
                 );
               },
