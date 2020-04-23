@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:greenway/screens/entries_page.dart';
+import 'package:greenway/screens/gridtest_page.dart';
 import 'package:greenway/utils/colors.dart';
 
 
@@ -14,6 +15,7 @@ class _MainPageState extends State<MainPage> {
   int _selectedTab = 0;
   var _pageOptions = [
     EntriesPage(),
+    ExampleGrid(),
   ];
 
   @override

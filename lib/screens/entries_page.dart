@@ -7,8 +7,6 @@ class EntriesPage extends StatefulWidget {
 }
 
 class _EntriesPageState extends State<EntriesPage> {
-
-
   @override
   Widget build(BuildContext context) {
     var posts;
@@ -69,31 +67,30 @@ class _EntriesPageState extends State<EntriesPage> {
           ),
         ],
       ),
-
     );
   }
-  
 
-  List<String>predefUsers = ['Prasann','Aditya', 'Dylan', 'Michael',];
+  List<String> predefUsers = [
+    'Prasann',
+    'Aditya',
+    'Dylan',
+    'Michael',
+  ];
 
-  Widget getFeedTile (int index){
-
+  Widget getFeedTile(int index) {
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Container(
           width: double.infinity,
           height: 450,
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blue,
-                  offset: Offset(0, 0.1),
-                  blurRadius: 3.0,
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25.0)),
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.blue,
+              offset: Offset(0, 0.1),
+              blurRadius: 3.0,
+            ),
+          ], color: Colors.white, borderRadius: BorderRadius.circular(25.0)),
           child: Column(
             children: <Widget>[
               Padding(
@@ -103,9 +100,12 @@ class _EntriesPageState extends State<EntriesPage> {
                 child: Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text(predefUsers[index]
-                        ,
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),
+                      title: Text(
+                        predefUsers[index],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
@@ -125,7 +125,8 @@ class _EntriesPageState extends State<EntriesPage> {
                         child: Image.network(
                           'https://picsum.photos/250?image=9',
                           fit: BoxFit.cover,
-                        ),),
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [
@@ -137,10 +138,9 @@ class _EntriesPageState extends State<EntriesPage> {
                         ],
                         // IMAGE GOES HERE
                       ),
-
                     ),
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15.0),
+                      padding: EdgeInsets.symmetric(horizontal: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -149,12 +149,12 @@ class _EntriesPageState extends State<EntriesPage> {
                               Row(
                                 children: <Widget>[
                                   IconButton(
-                                      icon: Icon(Icons.smoking_rooms), color: Colors.black,
+                                      icon: Icon(Icons.smoking_rooms),
+                                      color: Colors.black,
                                       iconSize: 30,
                                       onPressed: () {
                                         print("LIKED!");
-                                      }
-                                  ),
+                                      }),
                                   Text(
                                     '120KG CO2',
                                     style: TextStyle(
@@ -165,24 +165,28 @@ class _EntriesPageState extends State<EntriesPage> {
                                   )
                                 ],
                               ),
-                              SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                             ],
                           ),
                           GestureDetector(
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                             child: Container(
                               child: FlatButton.icon(
                                 color: Colors.black26,
-                                icon: Icon(Icons.add_circle, color: Colors.black,),
-                                label: Text('More info!', style: TextStyle(
+                                icon: Icon(
+                                  Icons.add_circle,
                                   color: Colors.black,
-                                ),),
+                                ),
+                                label: Text(
+                                  'More info!',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
                                 splashColor: Colors.black,
-                                onPressed: () {
-
-                                },
+                                onPressed: () {},
                               ),
                             ),
                           )
@@ -197,8 +201,5 @@ class _EntriesPageState extends State<EntriesPage> {
         ),
       ),
     );
-
-
   }
-
 }
