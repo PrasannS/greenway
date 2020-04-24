@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:timeago/timeago.dart' as timeago;
+import 'package:greenway/models/entry.dart';
+import 'package:greenway/views/info_page.dart';
 
 class EntriesPage extends StatefulWidget {
   @override
@@ -7,9 +9,33 @@ class EntriesPage extends StatefulWidget {
 }
 
 class _EntriesPageState extends State<EntriesPage> {
+
+
+  List<Entry> posts = [];
+  bool fbloaded = false;
+
+  Future getAllPosts() async{
+    await Firestore.instance.collection('posts').getDocuments().then((snapshot){
+      for (DocumentSnapshot ds in snapshot.documents){
+        setState(() {
+          posts.add(Entry.fromMap(ds.data));
+        });
+      }
+    });
+
+    setState(() {
+      fbloaded=true;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAllPosts();
+  }
   @override
   Widget build(BuildContext context) {
-    var posts;
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
@@ -58,12 +84,13 @@ class _EntriesPageState extends State<EntriesPage> {
           ),
           Container(
             height: 2000.0,
-            child: ListView.builder(
+            child: fbloaded?ListView.builder(
+              itemCount: posts.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
                 return getFeedTile(index);
               },
-            ),
+            ):Center(child: CircularProgressIndicator())
           ),
         ],
       ),
@@ -101,7 +128,7 @@ class _EntriesPageState extends State<EntriesPage> {
                   children: <Widget>[
                     ListTile(
                       title: Text(
-                        predefUsers[index],
+                        posts[index].title,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -123,7 +150,7 @@ class _EntriesPageState extends State<EntriesPage> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Image.network(
-                          'https://picsum.photos/250?image=9',
+                          posts[index].image,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -156,7 +183,7 @@ class _EntriesPageState extends State<EntriesPage> {
                                         print("LIKED!");
                                       }),
                                   Text(
-                                    '120KG CO2',
+                                    posts[index].footprint.toString()+'KG CO2',
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w600,
@@ -171,7 +198,12 @@ class _EntriesPageState extends State<EntriesPage> {
                             ],
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => InfoPage(index: index)),
+                              );
+                            },
                             child: Container(
                               child: FlatButton.icon(
                                 color: Colors.black26,
@@ -186,7 +218,12 @@ class _EntriesPageState extends State<EntriesPage> {
                                   ),
                                 ),
                                 splashColor: Colors.black,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => InfoPage(index: index)),
+                                  );
+                                },
                               ),
                             ),
                           )

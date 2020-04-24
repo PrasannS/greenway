@@ -2,8 +2,10 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:greenway/models/entry.dart';
 
 import 'package:greenway/views/info_page.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,6 +26,29 @@ class _HomePageState extends State<HomePage> {
     );
 
   }
+
+  int totalentries = 0;
+  int totalco2 = 0;
+
+  Future getInfo() async{
+    await Firestore.instance.collection('posts').getDocuments().then((snapshot){
+      for (DocumentSnapshot ds in snapshot.documents){
+        setState(() {
+          Entry e = Entry.fromMap(ds.data);
+          totalco2+=e.footprint;
+          totalentries+=1;
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getInfo();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          "put emissions here",
+                          totalco2.toString(),
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 16
@@ -108,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          "put entries here",
+                          totalentries.toString(),
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 16

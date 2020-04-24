@@ -6,8 +6,10 @@ class Entry {
 
   String title;
   int datetime;
+  int footprint;
 
-  Entry({this.id, this.uid, this.image, this. title, this.datetime});
+
+  Entry({this.id, this.uid, this.image, this. title, this.datetime, this.footprint});
 
   Map<String, dynamic> toMap() =>{
     "id": id,
@@ -15,6 +17,7 @@ class Entry {
     "image": image,
     "title": title,
     "datetime":datetime,
+    "footprint":footprint
   };
 
   factory Entry.fromMap(Map<String, dynamic> json) => new Entry(
@@ -23,6 +26,7 @@ class Entry {
     title:json["title"],
     uid:json["uid"],
     image:json["image"],
+    footprint:json['footprint']
   );
 
   @override

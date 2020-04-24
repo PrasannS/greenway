@@ -1,23 +1,27 @@
 import 'dart:io';
+import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:greenway/models/entry.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 import 'details.dart';
 
 
 import 'dart:async';
 
-
-
-import 'package:greenway/api_client/api_client.dart';
-
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../vision_utils/detector_painters.dart';
+import 'package:path/path.dart' as Path;
+
 class InfoPage extends StatefulWidget {
   final int index;
   final File image;
+
 
   InfoPage({Key key, this.index, this.image}) : super(key: key);
 
@@ -31,16 +35,43 @@ class _InfoPageState extends State<InfoPage>{
   double _multiple;
   double _opacity;
   double _opacityTitleAppBar;
+  Entry curentry;
 
   bool fbloaded = false;
+  bool preloaded = false;
 
+  Future getCurPost() async{
+    await Firestore.instance.collection('posts').getDocuments().then((snapshot){
+      int i = 0;
+      for (DocumentSnapshot ds in snapshot.documents){
+        if(i==widget.index){
+          setState(() {
+            curentry = Entry.fromMap(ds.data);
+            name = curentry.title;
+            fbloaded = true;
+          });
+        }
+        i++;
+      }
+    });
+
+    setState(() {
+      fbloaded=true;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     // To display the current output from the Camera,
-    // create a CameraController.
-    _getAndScanImagestart();
+    // create a CameraController
+    if(widget.index==null)
+      _getAndScanImagestart();
+    else{
+      preloaded = true;
+      getCurPost();
+    }
+
   }
 
   File _imageFile;
@@ -72,6 +103,7 @@ class _InfoPageState extends State<InfoPage>{
   }
 
   Future<void> _getAndScanImagestart() async {
+    await uploadImage();
     setState(() {
       _imageFile = null;
       _imageSize = null;
@@ -87,6 +119,7 @@ class _InfoPageState extends State<InfoPage>{
     setState(() {
       _imageFile = imageFile;
     });
+    _submit();
   }
 
   Future<void> _getAndScanImage() async {
@@ -140,49 +173,33 @@ class _InfoPageState extends State<InfoPage>{
 
   }
 
-  CustomPaint _buildResults(Size imageSize, dynamic results)  {
-    CustomPainter painter;
-
-    List<String> names = [];
-
-
-
-
-    print(results);
-    switch (_currentDetector) {
-      case Detector.label:
-        painter = LabelDetectorPainter(_imageSize, results);
-        break;
-      default:
-        break;
-    }
-
-    return CustomPaint(
-      painter: painter,
-    );
+  Future uploadImage() async {
+    print(Path.basename(widget.image.path));
+    StorageReference reference = FirebaseStorage.instance
+        .ref()
+        .child("photos/${Path.basename(widget.image.path)}");
+    StorageUploadTask upload = reference.putFile(widget.image);
+    await upload.onComplete;
+    print('complete');
   }
 
-  Widget _buildImage() {
-    return Container(
-      constraints: const BoxConstraints.expand(),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: FileImage(widget.image),
-          fit: BoxFit.fill,
-        ),
-      ),
-      /*child: _imageSize == null || _scanResults == null
-          ? const Center(
-        child: Text(
-          'Scanning...',
-          style: TextStyle(
-            color: Colors.green,
-            fontSize: 30.0,
-          ),
-        ),
-      )
-          : _buildResults(_imageSize, _scanResults),*/
-    );
+
+  _submit() async {
+    //print("Starting to submit");
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    String pic_url = await FirebaseStorage.instance
+        .ref()
+        .child("photos/${Path.basename(widget.image.path)}")
+        .getDownloadURL();
+
+    DocumentReference ref = await Firestore.instance.collection('posts').add({
+      'uid':user.uid,
+      'id':null,
+      'image': pic_url,
+      'title': name,
+      'datetime': DateTime.now().millisecondsSinceEpoch,
+      'footprint': (70+(new Random().nextInt(30)))
+    });
   }
 
 
@@ -301,7 +318,7 @@ class _InfoPageState extends State<InfoPage>{
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: Image.file(widget.image).image,
+                      image: preloaded? Image.network(curentry.image,).image:Image.file(widget.image).image,
                       fit: BoxFit.cover,
                     ),
                   ),
