@@ -166,6 +166,8 @@ def filter_items(items):
     for i in items:
         if '.' in i:
             ""
+        if ':' in i:
+            ""
         else:
             for k in keywords:
                 if k in str.lower(i):

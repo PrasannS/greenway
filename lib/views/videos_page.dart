@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_api/youtube_api.dart';
 
-class VideosPage extends StatefulWidget{
+class VideosPage extends StatelessWidget{
 
-  @override
-  _VidState createState() => _VidState();
+  final List<YT_API> ytRes;
 
-}
+  const VideosPage({Key key, this.ytRes}) : super(key: key);
 
-class _VidState extends State<VideosPage>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         backgroundColor: Colors.white,
         body:new Container(
-          child: new GridView.count(
-            crossAxisCount: 1,
+          height: 400.0*ytRes.length,
+          child: new ListView.builder(
+            itemCount: ytRes.length-1,
             scrollDirection: Axis.vertical,
-            children: new List<Widget>.generate(16, (index) {
+            itemBuilder: (context, index) {
               return new Container(
                 child: Column(
                   children: [
@@ -37,26 +37,14 @@ class _VidState extends State<VideosPage>{
                                   ),
                                 ),
                                 SizedBox(width: 20),
-                                RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "19:04 mins\n",
-                                        style: TextStyle(
-                                          color: Colors.black.withOpacity(.5),
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: "How to make Organic Shoes!",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          height: 1.5,
-                                          color: Colors.black,
-                                          fontSize: 15
-                                        ),
-                                      ),
-                                    ],
+                                Text(
+                                  ytRes[index].title,
+                                  overflow:TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.5,
+                                      color: Colors.black,
+                                      fontSize: 15
                                   ),
                                 ),
                                 Spacer(),
@@ -79,10 +67,10 @@ class _VidState extends State<VideosPage>{
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 310,
+                      height: 220,
                       decoration: new BoxDecoration(
                         image: DecorationImage(
-                          image: new NetworkImage('https://i.ytimg.com/vi/VCjH1zNs530/maxresdefault.jpg'),
+                          image: new NetworkImage(ytRes[index].thumbnail['high']['url']),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(10.0),
@@ -93,7 +81,6 @@ class _VidState extends State<VideosPage>{
                   );
             }),
           ),
-        )
     );
   }
 

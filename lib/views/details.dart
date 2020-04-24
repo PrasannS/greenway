@@ -6,6 +6,7 @@ import 'package:greenway/models/web_result.dart';
 import 'package:greenway/screens/shop.dart';
 import 'package:greenway/views/resource_screen.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:youtube_api/youtube_api.dart';
 import 'about.dart';
 import 'videos_page.dart';
 
@@ -38,31 +39,51 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
   bool shoploaded = false;
   bool webloaded = false;
   bool fploaded = false;
+  bool ytloaded = false;
+
+  static String key = "AIzaSyDuhrq58n8OWBQGN2AoQBEL-51DCf6pchM";
+  YoutubeAPI ytApi = new YoutubeAPI(key);
+  List<YT_API> ytResult = [];
+
+  callYTAPI(String item) async {
+    print('UI callled');
+    ytResult = await ytApi.search("Eco-friendly "+item);
+    setState(() {
+      ytloaded = true;
+      print('UI Updated');
+    });
+  }
 
   Future getData() async{
     print("STARTED");
-    await fetchFootprintResult(widget.item).then((value){
-      print("ENTERED SOMEWHERE");
-      setState(() {
-        footprintResult = value;
-        fploaded = true;
-        print("FOOTPRINT RESULT"+footprintResult.toString());
-        print(fploaded);
-        print("FINISHED");
+    if (!fploaded)
+      await fetchFootprintResult(widget.item).then((value){
+        print("ENTERED SOMEWHERE");
+        setState(() {
+          footprintResult = value;
+          fploaded = true;
+          print("FOOTPRINT RESULT"+footprintResult.toString());
+          print(fploaded);
+          print("FINISHED");
+        });
       });
-    });
-    await fetchShopResult(widget.item).then((value) {
-      setState(() {
-        shopresults = value;
-        shoploaded = true;
+    if (!ytloaded)
+      await callYTAPI(widget.item);
+    if  (!shoploaded)
+      await fetchShopResult(widget.item).then((value) {
+        setState(() {
+          shopresults = value;
+          shoploaded = true;
+        });
       });
-    });
-    await fetchWebResult(widget.item).then((value){
-      setState(() {
-        webresults = value;
-        webloaded = true;
+    if (!webloaded)
+      await fetchWebResult(widget.item).then((value){
+        setState(() {
+          webresults = value;
+          webloaded = true;
+        });
       });
-    });
+
   }
 
   @override
@@ -96,8 +117,8 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
                 tabs: [
                   Tab( text: "About",),
                   Tab( text: "Videos",),
-                  Tab(text: "Resources",),
                   Tab( text: "Shop",),
+                  Tab(text: "Resources",),
                 ],
               ),
             )
@@ -111,9 +132,9 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         controller: _pageController,
         children: [
           fploaded?About(carbon: footprintResult.value.floor(),lifespan: 78 , carbontype: "bad",life: "bad",description:footprintResult.description ,):Center(child: CircularProgressIndicator()),
-          VideosPage(),
-          webloaded?ResourcesPage(webresu: webresults,):Center(child: CircularProgressIndicator()),
+          ytloaded?VideosPage(ytRes: ytResult,):Center(child: CircularProgressIndicator()),
           shoploaded?ShopPage(shops: shopresults,):Center(child: CircularProgressIndicator()),
+          webloaded?ResourcesPage(webresu: webresults,):Center(child: CircularProgressIndicator()),
         ],
       ),
     );
