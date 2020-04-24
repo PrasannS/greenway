@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:greenway/api_client/api_client.dart';
+import 'package:greenway/views/home_screen.dart';
 import 'package:greenway/views/onboarding_screen.dart';
 
 Future<void> main() async {
@@ -17,7 +18,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: OnboardingScreen()
+      home: HomePage()
     ),
   );
 }

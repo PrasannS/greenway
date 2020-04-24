@@ -7,6 +7,7 @@ import 'videos_page.dart';
 class Details extends StatefulWidget {
   @override
   _DetailsState createState() => _DetailsState();
+
 }
 
 class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
@@ -70,7 +71,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         },
         controller: _pageController,
         children: [
-          About(),
+          About(carbon: 1042,lifespan: 100 , carbontype: "bad",life: "bad",description:"Hello" ,),
           VideosPage(),
         ],
       ),

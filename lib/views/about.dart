@@ -2,10 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'counter.dart';
 class About extends StatelessWidget {
-  int carbon = 1046;
-  int lifespan = 46;
-  String carbontype = "bad";
-  String life = "long";
+  final int carbon ;
+  final lifespan;
+  final carbontype;
+  final life;
+  final description;
+
+
+  const About({
+    Key key,
+    this.carbon,
+    this.lifespan,
+    this.carbontype,
+    this.life,
+    this.description
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +41,12 @@ class About extends StatelessWidget {
                 children: <Widget>[
                   Counter(
                     color: Colors.red,
-                    number: 1046,
+                    number: carbon,
                     title: "CO2 Footprint",
                   ),
                   Counter(
                     color: Color(0xFF36C12C),
-                    number: 46,
+                    number: lifespan,
                     title: "Lifespan",
                   ),
                 ],

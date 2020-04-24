@@ -1,9 +1,12 @@
 
 
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:greenway/api_client/api_client.dart';
-import 'package:greenway/main.dart';
+
+import 'package:greenway/views/info_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +14,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Future getImage(BuildContext context) async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => InfoPage(image:image)),
+    );
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   IconButton(
                     onPressed: (){
                       print("PROCESS STARTED");
-                      fetchWebResult("shoe");
+                      getImage(context);
                     },
                     icon: Icon(
                       Icons.camera,

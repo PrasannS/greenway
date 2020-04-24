@@ -1,10 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 import 'details.dart';
 
+
+import 'dart:async';
+
+
+
+import 'package:greenway/api_client/api_client.dart';
+
+import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../vision_utils/detector_painters.dart';
 class InfoPage extends StatefulWidget {
   final int index;
-  InfoPage({Key key, this.index}) : super(key: key);
+  final File image;
+
+  InfoPage({Key key, this.index, this.image}) : super(key: key);
 
   @override
   _InfoPageState createState() => _InfoPageState();
@@ -18,6 +33,167 @@ class _InfoPageState extends State<InfoPage>{
   double _opacityTitleAppBar;
 
 
+  @override
+  void initState() {
+    super.initState();
+    // To display the current output from the Camera,
+    // create a CameraController.
+    _getAndScanImagestart();
+  }
+
+  File _imageFile;
+  Size _imageSize;
+  dynamic _scanResults;
+  Detector _currentDetector = Detector.label;
+  final ImageLabeler _imageLabeler = FirebaseVision.instance.imageLabeler();
+  String footprint = "Loading";
+  String name = "Loading";
+  String description = "Loading";
+
+  Future<void> _getImageSize(File imageFile) async {
+    final Completer<Size> completer = Completer<Size>();
+
+    final Image image = Image.file(imageFile);
+    image.image.resolve(const ImageConfiguration()).addListener(
+      ImageStreamListener((ImageInfo info, bool _) {
+        completer.complete(Size(
+          info.image.width.toDouble(),
+          info.image.height.toDouble(),
+        ));
+      }),
+    );
+
+    final Size imageSize = await completer.future;
+    setState(() {
+      _imageSize = imageSize;
+    });
+  }
+
+  Future<void> _getAndScanImagestart() async {
+    setState(() {
+      _imageFile = null;
+      _imageSize = null;
+    });
+
+    final File imageFile = widget.image;
+
+    if (imageFile != null) {
+      _getImageSize(imageFile);
+      _scanImage(imageFile);
+    }
+
+    setState(() {
+      _imageFile = imageFile;
+    });
+  }
+
+  Future<void> _getAndScanImage() async {
+    setState(() {
+      _imageFile = null;
+      _imageSize = null;
+    });
+
+    final File imageFile =
+    await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    if (imageFile != null) {
+      _getImageSize(imageFile);
+      _scanImage(imageFile);
+    }
+
+    setState(() {
+      _imageFile = imageFile;
+    });
+  }
+
+  Future<void> _scanImage(File imageFile) async {
+    setState(() {
+      _scanResults = null;
+    });
+
+    final FirebaseVisionImage visionImage =
+    FirebaseVisionImage.fromFile(imageFile);
+
+    dynamic results;
+    switch (_currentDetector) {
+      case Detector.label:
+        results = await _imageLabeler.processImage(visionImage);
+        break;
+      default:
+        return;
+    }
+
+    setState(() {
+      _scanResults = results;
+
+    });
+
+    ImageLabel label = _scanResults[0];
+
+    setState(() {
+      name = label.text;
+    });
+
+    fetchFootprintResult(name).then((value){
+      setState(() {
+        description = value.description;
+        footprint = value.value.toString();
+        String unit = "kg";
+        if (value.unit.toString() == "True"){
+          unit = "g";
+        }
+        footprint = footprint + unit;
+      });
+    });
+
+
+  }
+
+  CustomPaint _buildResults(Size imageSize, dynamic results)  {
+    CustomPainter painter;
+
+    List<String> names = [];
+
+
+
+
+    print(results);
+    switch (_currentDetector) {
+      case Detector.label:
+        painter = LabelDetectorPainter(_imageSize, results);
+        break;
+      default:
+        break;
+    }
+
+    return CustomPaint(
+      painter: painter,
+    );
+  }
+
+  Widget _buildImage() {
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: FileImage(widget.image),
+          fit: BoxFit.fill,
+        ),
+      ),
+      /*child: _imageSize == null || _scanResults == null
+          ? const Center(
+        child: Text(
+          'Scanning...',
+          style: TextStyle(
+            color: Colors.green,
+            fontSize: 30.0,
+          ),
+        ),
+      )
+          : _buildResults(_imageSize, _scanResults),*/
+    );
+  }
+
 
   double interval(double lower, double upper, double progress) {
     assert(lower < upper);
@@ -30,11 +206,10 @@ class _InfoPageState extends State<InfoPage>{
 
   @override
   Widget build(BuildContext context) {
-    String name = "Brown Shoe";
     int carbonnum = 90;
     int itemnum = 01;
     String category = "Leather"; //may not need this
-    //_progress = 0;
+    _progress = 0;
 
     return Scaffold(
       body: Container(
@@ -128,14 +303,14 @@ class _InfoPageState extends State<InfoPage>{
             ),
             Positioned(
               top: 200,
-              child: Padding(
+              child:Padding(
                 padding: const EdgeInsets.fromLTRB(0, 13, 13, 13),
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: new NetworkImage("https://huckberry.imgix.net/uploads/post/image/2454/featured_2x_greenflex_dark_nubuck_header.jpeg?ixlib=rails-2.1.4&auto=%5B%22format%2Ccompress%22%5D&cs=tinysrgb&fit=max&w=1920"),
+                      image: Image.file(widget.image).image,
                       fit: BoxFit.cover,
                     ),
                   ),
