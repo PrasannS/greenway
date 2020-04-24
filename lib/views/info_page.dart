@@ -27,10 +27,12 @@ class InfoPage extends StatefulWidget {
 
 class _InfoPageState extends State<InfoPage>{
   PageController _pageController;
-  double _progress;
+  double _progress = 0;
   double _multiple;
   double _opacity;
   double _opacityTitleAppBar;
+
+  bool fbloaded = false;
 
 
   @override
@@ -132,6 +134,7 @@ class _InfoPageState extends State<InfoPage>{
 
     setState(() {
       name = label.text;
+      fbloaded = true;
     });
 
     fetchFootprintResult(name).then((value){
@@ -209,7 +212,7 @@ class _InfoPageState extends State<InfoPage>{
     int carbonnum = 90;
     int itemnum = 01;
     String category = "Leather"; //may not need this
-    _progress = 0;
+    //_progress = 0;
 
     return Scaffold(
       body: Container(
@@ -337,7 +340,7 @@ class _InfoPageState extends State<InfoPage>{
                 return Container(
                   height: MediaQuery.of(context).size.height -
                       MediaQuery.of(context).size.height * .12,
-                  child: Details(),
+                  child: fbloaded?Details():Center(child: CircularProgressIndicator()),
                 );
               },
               headerBuilder: (context, state){

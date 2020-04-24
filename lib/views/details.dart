@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:greenway/models/footprint_result.dart';
+import 'package:greenway/models/shop_result.dart';
+import 'package:greenway/models/web_result.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -23,6 +26,15 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
 
 
   }
+
+  List<ShopResult> shopresults = [];
+  List<WebResult> webresults =[];
+  FootprintResult footprintResult;
+
+  bool shoploaded = false;
+  bool webloaded = false;
+  bool fploaded = false;
+
 
   @override
   Widget build(BuildContext context) {
