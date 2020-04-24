@@ -276,8 +276,14 @@ def run_search(keyword):
 def get_footprint():
     args = request.args
     keyword = args['keyword']
+    #testing purposes only, remember to remove
+    if keyword =='Shoe':
+        return jsonify({
+            'unit':True, 
+            'description':'Carbon Footprint of Our Products. At Nike, material innovations—such as recycled polyester, Flyknit, Flyleather, and Nike Air—are changing the world of sustainable performance and reducing the average product carbon footprint of our products. Today, Nike’s average product carbon footprint across footwear and apparel is 7.45 kg CO2e/unit.', 
+            'value': str(75)})
     a, b, c = run_search(keyword)
-    result = jsonify({'unit':c, 'description':a, 'value': b})
+    result = jsonify({'unit':c, 'description':a, 'value': str(b)})
     return result
 
 

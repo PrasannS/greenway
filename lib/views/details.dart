@@ -5,8 +5,6 @@ import 'package:greenway/models/shop_result.dart';
 import 'package:greenway/models/web_result.dart';
 import 'package:greenway/screens/shop.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
-import 'package:mobx/mobx.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'about.dart';
 import 'videos_page.dart';
 
@@ -43,6 +41,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
   Future getData() async{
     print("STARTED");
     await fetchFootprintResult(widget.item).then((value){
+      print("ENTERED SOMEWHERE");
       setState(() {
         footprintResult = value;
         fploaded = true;
@@ -57,12 +56,12 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         shoploaded = true;
       });
     });
-    await fetchWebResult(widget.item).then((value){
+    /*await fetchWebResult(widget.item).then((value){
       setState(() {
         webresults = value;
         webloaded = true;
       });
-    });
+    });*/
   }
 
   @override

@@ -13,6 +13,7 @@ class ShopPage extends StatelessWidget {
       return new Scaffold(
         backgroundColor: Colors.white,
         body:new Container(
+          height: shops.length*150.0,
         child: new GridView.builder(
             itemCount:shops.length,
             gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),

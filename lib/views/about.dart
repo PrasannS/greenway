@@ -82,11 +82,8 @@ class About extends StatelessWidget {
                   + carbon.toString() +
                   " and has a lifespan of "
                   + lifespan.toString() +
-                " years. The item is "
-                  + carbontype +
-                  " for the environment, and will last for a "
-                  + life +
-                  " time.",
+                " years. "
+                  + description,
               style: TextStyle(
                 color: Colors.black,
                 fontFamily: 'Google',
