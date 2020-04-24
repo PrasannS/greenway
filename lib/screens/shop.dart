@@ -65,7 +65,7 @@ class ShopPage extends StatelessWidget {
                                 child: Container(
                                   margin: EdgeInsets.all(5),
                                   width: double.infinity,
-                                  height: 80,
+                                  height: 100,
                                   child: ClipRRect(
                                     child: Image.network(
                                       shops[index].image+".jpg",
@@ -92,7 +92,7 @@ class ShopPage extends StatelessWidget {
                                 child: Text(shops[index].item, textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -102,10 +102,10 @@ class ShopPage extends StatelessWidget {
                                 flex: 1,
                                 child: Row(children: <Widget>[
                                   Text(
-                                    ' ___________________________',
+                                    ' __________________________',
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 14.8,
+                                      fontSize: 13.8,
                                     ),
                                   ),
                                 ]),
@@ -117,7 +117,7 @@ class ShopPage extends StatelessWidget {
                                 flex: 1,
                                 child: Row(children: <Widget>[
                                   Text(
-                                    '    ${shops[index].price}',
+                                    '  ${shops[index].price}',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 22,
@@ -131,7 +131,7 @@ class ShopPage extends StatelessWidget {
                                 flex: 1,
                                 child: Row(children: <Widget>[
                                   Text(
-                                    '     ${shops[index].seller}',
+                                    '   ${shops[index].seller}',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18,
