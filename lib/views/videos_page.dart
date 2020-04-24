@@ -30,9 +30,9 @@ class _VidState extends State<VideosPage>{
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  "01",
+                                  "0"+ (++index).toString(),
                                   style: TextStyle(
-                                    color: Colors.black.withOpacity(.15),
+                                    color: Colors.black.withOpacity(.5),
                                     fontSize: 32,
                                   ),
                                 ),
@@ -43,7 +43,7 @@ class _VidState extends State<VideosPage>{
                                       TextSpan(
                                         text: "19:04 mins\n",
                                         style: TextStyle(
-                                          color: Colors.grey.withOpacity(.5),
+                                          color: Colors.black.withOpacity(.5),
                                           fontSize: 18,
                                         ),
                                       ),
@@ -52,7 +52,8 @@ class _VidState extends State<VideosPage>{
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           height: 1.5,
-                                          color: Colors.black
+                                          color: Colors.black,
+                                          fontSize: 15
                                         ),
                                       ),
                                     ],
@@ -83,7 +84,8 @@ class _VidState extends State<VideosPage>{
                         image: DecorationImage(
                           image: new NetworkImage('https://i.ytimg.com/vi/VCjH1zNs530/maxresdefault.jpg'),
                           fit: BoxFit.cover,
-                        )
+                        ),
+                        borderRadius: BorderRadius.circular(10.0),
                       )
                     )
                   ],
