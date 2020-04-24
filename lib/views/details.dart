@@ -4,6 +4,7 @@ import 'package:greenway/models/footprint_result.dart';
 import 'package:greenway/models/shop_result.dart';
 import 'package:greenway/models/web_result.dart';
 import 'package:greenway/screens/shop.dart';
+import 'package:greenway/views/resource_screen.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import 'about.dart';
 import 'videos_page.dart';
@@ -56,12 +57,12 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         shoploaded = true;
       });
     });
-    /*await fetchWebResult(widget.item).then((value){
+    await fetchWebResult(widget.item).then((value){
       setState(() {
         webresults = value;
         webloaded = true;
       });
-    });*/
+    });
   }
 
   @override
@@ -111,7 +112,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         children: [
           fploaded?About(carbon: footprintResult.value.floor(),lifespan: 78 , carbontype: "bad",life: "bad",description:footprintResult.description ,):Center(child: CircularProgressIndicator()),
           VideosPage(),
-          VideosPage(),
+          webloaded?ResourcesPage(webresu: webresults,):Center(child: CircularProgressIndicator()),
           shoploaded?ShopPage(shops: shopresults,):Center(child: CircularProgressIndicator()),
         ],
       ),

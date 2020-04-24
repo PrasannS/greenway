@@ -22,7 +22,7 @@ class ShopResult {
   @override
   String toString() {
     // TODO: implement toString
-    return item.toString()+" "+seller.toString()+" "+price.toString();
+    return item.toString()+" "+seller.toString()+" "+price.toString()+" "+image.toString();
   }
 
 }
