@@ -277,7 +277,8 @@ def get_footprint():
     args = request.args
     keyword = args['keyword']
     a, b, c = run_search(keyword)
-    return jsonify({'unit':c, 'description':a, 'value': b})
+    result = jsonify({'unit':c, 'description':a, 'value': b})
+    return result
 
 
 @app.errorhandler(500)

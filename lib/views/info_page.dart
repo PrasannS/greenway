@@ -137,18 +137,6 @@ class _InfoPageState extends State<InfoPage>{
       fbloaded = true;
     });
 
-    fetchFootprintResult(name).then((value){
-      setState(() {
-        description = value.description;
-        footprint = value.value.toString();
-        String unit = "kg";
-        if (value.unit.toString() == "True"){
-          unit = "g";
-        }
-        footprint = footprint + unit;
-      });
-    });
-
 
   }
 
@@ -340,7 +328,7 @@ class _InfoPageState extends State<InfoPage>{
                 return Container(
                   height: MediaQuery.of(context).size.height -
                       MediaQuery.of(context).size.height * .12,
-                  child: fbloaded?Details():Center(child: CircularProgressIndicator()),
+                  child: fbloaded?Details(item: name,):Center(child: CircularProgressIndicator()),
                 );
               },
               headerBuilder: (context, state){

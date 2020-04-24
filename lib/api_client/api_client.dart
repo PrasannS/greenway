@@ -9,17 +9,19 @@ import 'package:http/http.dart' as http;
 
 Future<FootprintResult> fetchFootprintResult(String val) async {
 
+  print(val);
   String url = 'http://192.168.0.33:5000/get_footprint?keyword='+val;
   Response response = await get(url);
   // sample info available in response
   print(response.body);
   FootprintResult footprintResult = FootprintResult.fromJson(json.decode(response.body));
 
+  print("HELLLOOOOO");
   return footprintResult;
 
 }
 
-Future<List> fetchWebResult(String val) async {
+Future<List<WebResult>> fetchWebResult(String val) async {
 
   String url = 'http://192.168.0.33:5000/get_web_data?item='+val;
   Response response = await get(url);
@@ -38,7 +40,7 @@ Future<List> fetchWebResult(String val) async {
 }
 
 
-Future<List> fetchShopResult(String val) async {
+Future<List<ShopResult>> fetchShopResult(String val) async {
 
   String url = 'http://192.168.0.33:5000/get_shop_data?item='+val;
   Response response = await get(url);

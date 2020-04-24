@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:greenway/api_client/api_client.dart';
 import 'package:greenway/models/footprint_result.dart';
 import 'package:greenway/models/shop_result.dart';
 import 'package:greenway/models/web_result.dart';
+import 'package:greenway/screens/shop.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'about.dart';
 import 'videos_page.dart';
+
 class Details extends StatefulWidget {
+  final String item;
+
+  const Details({Key key, this.item}) : super(key: key);
+
   @override
   _DetailsState createState() => _DetailsState();
 
@@ -16,15 +23,13 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
   TabController _tabController;
   PageController _pageController;
-  ReactionDisposer _disposer;
 
   @override
   void initState(){
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
     _pageController = PageController(initialPage: 0);
-
-
+    getData();
   }
 
   List<ShopResult> shopresults = [];
@@ -35,6 +40,30 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
   bool webloaded = false;
   bool fploaded = false;
 
+  Future getData() async{
+    print("STARTED");
+    await fetchFootprintResult(widget.item).then((value){
+      setState(() {
+        footprintResult = value;
+        fploaded = true;
+        print("FOOTPRINT RESULT"+footprintResult.toString());
+        print(fploaded);
+        print("FINISHED");
+      });
+    });
+    await fetchShopResult(widget.item).then((value) {
+      setState(() {
+        shopresults = value;
+        shoploaded = true;
+      });
+    });
+    await fetchWebResult(widget.item).then((value){
+      setState(() {
+        webresults = value;
+        webloaded = true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +74,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         elevation: 0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(10),
-          child: Observer(builder: (context) {
-            return Flexible(
+          child: Flexible(
               child: TabBar(
                 onTap: (index) {
                   _pageController.animateToPage(index,
@@ -72,8 +100,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
                   Tab( text: "Shop",),
                 ],
               ),
-            );
-          }),
+            )
         ),
       ),
       body: PageView(
@@ -83,8 +110,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin{
         },
         controller: _pageController,
         children: [
-          About(carbon: 1042,lifespan: 100 , carbontype: "bad",life: "bad",description:"Hello" ,),
+          fploaded?About(carbon: footprintResult.value.floor(),lifespan: 78 , carbontype: "bad",life: "bad",description:footprintResult.description ,):Center(child: CircularProgressIndicator()),
           VideosPage(),
+          VideosPage(),
+          shoploaded?ShopPage(shops: shopresults,):Center(child: CircularProgressIndicator()),
         ],
       ),
     );
