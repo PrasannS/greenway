@@ -27,38 +27,32 @@ class VideosPage extends StatelessWidget{
                           Padding(padding: const EdgeInsets.all(10),
                           child:Padding(
                             padding: const EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "0"+ (++index).toString(),
-                                  style: TextStyle(
-                                    color: Colors.black.withOpacity(.5),
-                                    fontSize: 32,
+                            child: Flexible(
+                              child: Row(
+                                children: <Widget>[
+                                  Text(
+                                    "0"+ (++index).toString(),
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(.5),
+                                      fontSize: 32,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(width: 20),
-                                Text(
-                                  ytRes[index].title,
-                                  overflow:TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5,
-                                      color: Colors.black,
-                                      fontSize: 15
+                                  SizedBox(width: 20),
+                                  Container(
+                                    width: 300,
+                                    child: Text(
+                                      ytRes[index].title,
+                                      overflow:TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.5,
+                                          color: Colors.black,
+                                          fontSize: 15
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                Spacer(),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20),
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.green.withOpacity(1),
-                                  ),
-                                  child: Icon(Icons.play_arrow, color: Colors.white),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           )
