@@ -216,7 +216,7 @@ class _InfoPageState extends State<InfoPage>{
   Widget build(BuildContext context) {
     int carbonnum = 90;
     int itemnum = 01;
-    String category = "Leather"; //may not need this
+    String category = "Item"; //may not need this
     //_progress = 0;
 
     return Scaffold(

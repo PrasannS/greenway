@@ -65,7 +65,7 @@ class ShopPage extends StatelessWidget {
                                 child: Container(
                                   margin: EdgeInsets.all(5),
                                   width: double.infinity,
-                                  height: 100,
+                                  height: double.infinity,
                                   child: ClipRRect(
                                     child: Image.network(
                                       shops[index].image+".jpg",
@@ -73,7 +73,7 @@ class ShopPage extends StatelessWidget {
                                     ),
                                   ),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(20),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.white,
@@ -89,11 +89,14 @@ class ShopPage extends StatelessWidget {
 
                               Expanded(
                                 flex:2,
-                                child: Text(shops[index].item, textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                  child: Text(shops[index].item, textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),

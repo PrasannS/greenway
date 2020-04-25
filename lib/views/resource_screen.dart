@@ -23,11 +23,14 @@ class ResourcesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.white,
         body: ListView.builder(
           itemCount: webresu.length,
           itemBuilder: (context, i) {
             return new ExpansionTile(
-              title: new Text(webresu[i].name),
+              title: new Text(webresu[i].name,
+                  style: TextStyle(
+                  fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black)),
               children: <Widget>[
                 _genList(i),
               ],
@@ -66,7 +69,10 @@ class ResourcesPage extends StatelessWidget {
       children: <Widget>[
         Container(
           height: 50,
-          child: Text('$s'),
+          child: Text('$s',
+              style: TextStyle(
+              fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.green)
+          ),
           width: 370,
         ),
       ],

@@ -19,7 +19,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: HomePage()
+      home: OnboardingScreen()
     ),
   );
 }

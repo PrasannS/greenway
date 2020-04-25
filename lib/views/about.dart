@@ -56,27 +56,23 @@ class About extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                " About your Item",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  fontFamily: 'Google'
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10,),
+                child: Text(
+                  " About your Item",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    fontFamily: 'Google'
+                  ),
                 ),
               ),
-              Text(
-                "More details ",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue,
-                ),
-              )
             ],
           ),
           SizedBox(height: 20,),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15,),
             child: Text(
               "Your item has a C02 Footprint of "
                   + carbon.toString() +

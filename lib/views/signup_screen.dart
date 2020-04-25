@@ -80,15 +80,30 @@ class _SignupScreenState extends State<SignupScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 //SizedBox(height: 20.0,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
-                  child: Container(
-                    child: Text(
-                      'Signup',
-                      style: TextStyle(
-                          fontSize: 80.0, fontWeight: FontWeight.bold,color: Colors.black),
-                    ),
+                Container(
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.fromLTRB(15.0, 50.0, 0.0, 0.0),
+                        child: Text('Greenway',
+                            style: TextStyle(
+                                fontSize: 70.0, fontWeight: FontWeight.w300, color: Colors.black)),
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(16.0, 125.0, 0.0, 0.0),
+                        child: Text('Signup',
+                            style: TextStyle(
+                                fontSize: 60.0, fontWeight: FontWeight.bold, color: Colors.black)),
+
+                      ),
+                    ],
                   ),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
 
                 Row(
@@ -197,9 +212,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                 height: 50.0,
                                 child: Material(
                                   borderRadius: BorderRadius.circular(20.0),
-                                  shadowColor: Colors.greenAccent,
-                                  color: Colors.green,
-                                  elevation: 7.0,
+                                  shadowColor: Colors.blue,
+                                  color: Colors.grey,
+                                  elevation: 5.0,
                                   child: Center(
                                     child: Text(
                                       'SIGNUP',
