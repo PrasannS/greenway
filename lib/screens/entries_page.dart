@@ -59,7 +59,7 @@ class _EntriesPageState extends State<EntriesPage> {
                     IconButton(
                       icon: Icon(Icons.shuffle),
                       iconSize: 25,
-                      color: Colors.black54,
+                      color: Colors.green,
                       onPressed: () => print('Shuffle Feed'),
                     ),
                     SizedBox(
@@ -70,7 +70,7 @@ class _EntriesPageState extends State<EntriesPage> {
                       child: IconButton(
                         icon: Icon(Icons.add_box),
                         iconSize: 25,
-                        color: Colors.black54,
+                        color: Colors.green,
                         onPressed: () => print('Add Update'),
                       ),
                     )
@@ -113,7 +113,7 @@ class _EntriesPageState extends State<EntriesPage> {
           height: 450,
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
-              color: Colors.blue,
+              color: Colors.green,
               offset: Offset(0, 0.1),
               blurRadius: 3.0,
             ),

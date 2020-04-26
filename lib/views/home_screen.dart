@@ -94,15 +94,20 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(height: 150,),
                   Container(
+
                     height: 216,
                     width: 392,
+
                     decoration: BoxDecoration(
-                        border: Border(
-                            top: BorderSide(
-                                width: 2
-                            )
-                        ),
+                      borderRadius: BorderRadius.circular(40.0),
                         color: Colors.green,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0, 5),
+                          blurRadius: 10.0,
+                        ),
+                      ],
                     ),
                     child: Column(
                       children: [
@@ -112,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               color: Colors.black,
                               fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
                               fontSize: 20
                           ),
                         ),
@@ -120,7 +126,8 @@ class _HomePageState extends State<HomePage> {
                           totalco2.toString(),
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16
+                              fontSize: 16,
+
                           ),
                         ),
                         SizedBox(height: 40),
@@ -130,6 +137,8 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.black,
                               fontSize: 20,
                               fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+
                           ),
                         ),
                         SizedBox(height: 10,),
