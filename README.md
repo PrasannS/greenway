@@ -1,18 +1,14 @@
-# greenway
+# Greenway
 
 A new Flutter application.
 
-## Getting Started
+## Running this app 
 
-This project is a starting point for a Flutter application.
+This app consists of a flask server and a flutter app. To run the flutter app, see the flutter installation here - https://flutter.dev/. 
 
-A few resources to get you started if this is your first Flutter project:
+For flask, make sure that you have python 3 installed - see latest version here - https://www.python.org/downloads/
+Use pip install to get flask
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-```
-For help getting started with Flutter, view our
-```
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Install flask using pip using this command - https://pypi.org/project/Flask/
+2. Install beautifulsoup4 using this command - https://pypi.org/project/beautifulsoup4/
+3. In the directory greenway/lib/
