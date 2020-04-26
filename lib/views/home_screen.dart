@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Colors.white,
       body:ListView(
         children: [
           Row(
@@ -66,15 +66,16 @@ class _HomePageState extends State<HomePage> {
                     "Welcome",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 42,
+                      fontSize: 50,
                       fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   SizedBox(height: 20),
                   Text(
                     '  Take a photo to make an entry',
                     style: (TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       color: Colors.black,
                     )),
                   ),
@@ -86,22 +87,27 @@ class _HomePageState extends State<HomePage> {
                     },
                     icon: Icon(
                       Icons.camera,
-                      size: 56,
-                      color: Colors.green,
+                      size: 65,
+                      color: Colors.lightGreenAccent[400],
                     ),
                     padding: EdgeInsets.all(0),
                   ),
-                  SizedBox(height: 180,),
+                  SizedBox(height: 150,),
                   Container(
+
                     height: 216,
                     width: 392,
+
                     decoration: BoxDecoration(
-                        border: Border(
-                            top: BorderSide(
-                                width: 2
-                            )
+                      borderRadius: BorderRadius.circular(40.0),
+                        color: Colors.green,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0, 5),
+                          blurRadius: 10.0,
                         ),
-                        color: Colors.green[200]
+                      ],
                     ),
                     child: Column(
                       children: [
@@ -111,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               color: Colors.black,
                               fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
                               fontSize: 20
                           ),
                         ),
@@ -119,7 +126,8 @@ class _HomePageState extends State<HomePage> {
                           totalco2.toString(),
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16
+                              fontSize: 16,
+
                           ),
                         ),
                         SizedBox(height: 40),
@@ -129,6 +137,8 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.black,
                               fontSize: 20,
                               fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+
                           ),
                         ),
                         SizedBox(height: 10,),

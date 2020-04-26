@@ -15,7 +15,7 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.green,
       body: Column(
         children: <Widget>[
           SizedBox(height: 40.0,),
@@ -32,6 +32,7 @@ class _EntryScreenState extends State<EntryScreen> {
                 child: Text(
                   'Sign In',
                   style: TextStyle(
+                      color: Colors.black,
                       fontSize: 15.0,
                       fontWeight: pageIndex == 0 ? FontWeight.bold
                           : FontWeight.w400,
@@ -52,6 +53,7 @@ class _EntryScreenState extends State<EntryScreen> {
                 child: Text(
                   'Sign Up',
                   style: TextStyle(
+                      color: Colors.black,
                       fontSize: 15.0,
                       fontWeight: pageIndex == 1 ? FontWeight.bold
                           : FontWeight.w400,

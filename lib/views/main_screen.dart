@@ -38,12 +38,14 @@ class _MainPageState extends State<MainPage> {
         ),
         child: CurvedNavigationBar(
           height: MediaQuery.of(context).size.height / 14,
-          backgroundColor: Colors.grey[200],
+          backgroundColor: Colors.grey.shade300,
+
           items: <Widget>[
-            Icon(Icons.home, size: 30),
-            Icon(Icons.people, size: 30),
-            Icon(Icons.insert_chart, size: 30,),
-            Icon(Icons.person, size: 30,),
+
+            Icon(Icons.home, size: 30,
+              color: Colors.green,),
+            Icon(Icons.people, size: 30,
+              color: Colors.green,),
             //Icon(Icons.account_circle, size: 30),
           ],
           onTap: (index) {

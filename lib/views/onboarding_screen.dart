@@ -42,9 +42,14 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: <Widget>[
-                            Text('Become more eco friendly'),
+                            Text('Become more eco friendly',
+                                style: TextStyle(
+                                    fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)
+                            ),
                             Text(
                               'from the comfort of your home!',
+                                style: TextStyle(
+                                    fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white)
                             ),
                           ],
                         )),
@@ -81,6 +86,8 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           'Learn new ways to imrpove your lifestyle',
+                            style: TextStyle(
+                                fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white)
                         ),
                       ),
                     ),
@@ -116,9 +123,13 @@ class _OnboardingScreen extends State<OnboardingScreen> {
                       child: Column(children: <Widget>[
                         Text(
                           'Combat climate change',
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)
                         ),
                         Text(
                           'just one step at a time',
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)
                         ),
                       ]),
                     ),
@@ -192,6 +203,8 @@ class FinalScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       'Start your greenway today',
+                        style: TextStyle(
+                            fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)
                     ),
                   ),
                   SizedBox(
@@ -239,6 +252,8 @@ class _FirstScreen extends State<FirstScreen> {
                 child: Container(
                   child: Text(
                     'Welcome to Greenway',
+                      style: TextStyle(
+                          fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white)
                   ),
                 ),
               ),
