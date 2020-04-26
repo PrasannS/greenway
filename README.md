@@ -1,6 +1,6 @@
 # Greenway
 
-A new Flutter application.
+A climate change solution app built for the Silicon Valley Hacks Hackathon. 
 
 ## Running this app 
 
