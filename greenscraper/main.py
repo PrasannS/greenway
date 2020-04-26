@@ -38,7 +38,7 @@ def shop(query):
 
     soup = BeautifulSoup(htmlResult)
 
-    results = soup.findAll('div', class_='br-wholeCardClickable br-card br-small br-ocCiteHvrItm')
+    results = soup.findAll('li', class_='br-item')
 
     return results
 
@@ -57,7 +57,7 @@ def get_shop_data():
             try:
                 data['item'] = l.findAll('span')[-1]['title']
             except:
-                data['item'] = "shoes"
+                data['item'] = "eco-friendly"
             data['url'] = l.findAll('a', class_='br-adClickOut')[0]['href']
 
             shopdata.append(data)

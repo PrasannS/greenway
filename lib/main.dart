@@ -2,10 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:greenway/api_client/api_client.dart';
 import 'package:greenway/screens/entries_page.dart';
-import 'package:greenway/views/home_screen.dart';
-import 'package:greenway/views/onboarding_screen.dart';
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
@@ -19,7 +16,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: HomePage()
+      home: EntriesPage()
     ),
   );
 }
